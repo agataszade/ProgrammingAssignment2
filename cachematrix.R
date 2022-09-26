@@ -1,15 +1,8 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## The file contains a pair of functions that cache the inverse of a matrix.
 
 # The first function (makeCacheMatrix) creates a matrix.
-#which is really a list containing a function to
-
-#set the value of the matrix?????
-#get the value of the matrix??????
-#set the the inverse of the matrix
-#get the the inverse pd the matrix
+# It then defines functions, which are used to access and set 
+# the values of the matrix. In the end it creates a list of those functions. 
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -43,3 +36,25 @@ cacheSolve <- function(x, ...) {
   x$setinv(m)
   m
 }
+
+
+# Example to show how the function works:
+
+## First, the matrix with two rows and two columns is created using 
+## makeCacheMatrix function:
+matrix1 <- makeCacheMatrix(matrix(c(4,2,7,6), nrow=2,ncol=2))
+
+# Then, by using cacheSolve function, the inverse of the matrix is created:
+cacheSolve(matrix1)
+# [,1] [,2]
+# [1,]  0.6 -0.7
+# [2,] -0.2  0.4
+
+# Subsequent use of cacheSolve function reads the previously calculated inverse
+# of the matrix from memory; message appears "getting cached data":
+cacheSolve(matrix1)
+
+# getting cached data
+# [,1] [,2]
+# [1,]  0.6 -0.7
+# [2,] -0.2  0.4
